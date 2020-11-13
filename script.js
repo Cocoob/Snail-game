@@ -1,27 +1,26 @@
 // Déclaration des variables : 
-var a, b, c, nouveauCode;
+var a,b;
 
 // Récupération des éléments du DOM : 
-var colorDiv = document.querySelector('.color-div');
-var colorCode = document.querySelector('.color-code');
-
+const colorDice1 = document.querySelector('.color-div1');
+const colorDice2 = document.querySelector('.color-div2');
+const colors = ['red', 'green', 'blue', 'yellow', 'orange', 'purple']
 // Génération de couleur quand on presse la touche espace du clavier : 
-var codeRGB = document.addEventListener('keydown', function(e){
+var randomColor = document.addEventListener('keydown', function(e){
     if(e.keyCode === 32){
-        // On génère trois valeurs aléatoires pour chacune des trois valeurs r g et b
-        a = valeurAleatoire();
-        b = valeurAleatoire();
-        c = valeurAleatoire();
-
-        // Stockage de la valeur du code rgb :
-        nouveauCode = 'rgb(' + a + ',' + b + ',' + c + ')';
-
-        // Mise à jour des éléments du DOM : 
-        colorDiv.style.backgroundColor = nouveauCode;
-        colorCode.textContent = nouveauCode;
+        // On génère une valeur aléatoire parmis les couleurs du tableau
+        a = changeBackground();
+        b = changeBackground2();
     }
 });
 
-function valeurAleatoire(){
-    return Math.floor(Math.random()*256);
+function changeBackground(){
+const colorIndex= parseInt(Math.random()*colors.length)
+colorDice1.style.backgroundColor = colors[colorIndex];
 }
+
+function changeBackground2(){
+const colorIndex= parseInt(Math.random()*colors.length)
+colorDice2.style.backgroundColor = colors[colorIndex];
+}
+
